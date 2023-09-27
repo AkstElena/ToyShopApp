@@ -1,3 +1,4 @@
+
 import java.util.PriorityQueue;
 import Controller.Controller;
 import Controller.iGetToyList;
@@ -9,8 +10,8 @@ import View.View;
 public class App {
     public static void main(String[] args) {
 
-        // System.out.println("Сколько игрушек будет участовать в розыгрыше: 10");
         PriorityQueue<Toy> toys = new PriorityQueue<>();
+        System.out.println();
 
         iGetToyList model = new ToyList(toys);
         iGetView view = new View();
@@ -19,16 +20,16 @@ public class App {
         controller.run();
 
         System.out.println("=====================================");
-        controller.getToy();
-        controller.getToy();
-        controller.getToy();
-        controller.getToy();
-        controller.getToy();
-        controller.getToy();
-        controller.getToy();
-        controller.getToy();
-        controller.getToy();
-        controller.getToy();
+
+        if (toys.isEmpty()) {
+            System.err.println("Введены некорретный данные, необходимо перезапустить программу!");
+        } else {
+            controller.clearFile();
+            for (int i = toys.size(); i > 0; i--) {
+                controller.getToy();
+            }
+            System.out.println("Файл с выпавшими случайно призами создан");
+        }
 
     }
 }

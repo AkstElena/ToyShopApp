@@ -1,5 +1,7 @@
 package Controller;
 
+import java.io.File;
+
 public class Controller {
   private iGetToyList model;
   private iGetView view;
@@ -10,11 +12,19 @@ public class Controller {
   }
 
   public void run() {
-    view.start(model.getAllToys());
+    model.getAllToys(view.start());
   }
 
   public void getToy() {
     model.getWin();
+  }
+
+  // очистка файла игрушек при перезапуске программы
+  public void clearFile() {
+    File file = new File("ToysWin");
+    if (file.exists() && !file.isDirectory()) {
+      file.delete();
+    }
   }
 
 }

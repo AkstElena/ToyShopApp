@@ -27,6 +27,7 @@ public class Toy implements Comparable<Toy> {
     this.name = name;
   }
 
+  // вероятность, "вес" игрушки в общем списке игрушек
   public int getProbability() {
     return probability;
   }

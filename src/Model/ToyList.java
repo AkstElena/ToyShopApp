@@ -14,25 +14,35 @@ public class ToyList implements iGetToyList {
   }
 
   @Override
-  public PriorityQueue<Toy> getAllToys() {
+  public PriorityQueue<Toy> getAllToys(int quantity) {
     Random rand = new Random();
     int num;
-    for (int i = 0; i < 10; i++) {
-      num = rand.nextInt(100);
-      if (num >= 0 && num <= 14) {
-        Toy toy = new Toy("Constructor", 15);
+    int probability1 = 15;
+    int probability2 = 5;
+    int probability3 = 60;
+    int probability4 = 20;
+    int sumProbability = probability1 + probability2 + probability3 + probability4; // собираем общую сумму "весов"
+                                                                                    // игрушек, чтобы организовать
+                                                                                    // вероятность выпадения согласно
+                                                                                    // весу каждой. Вес задается в коде
+    // в зависимости от желаемого количества игрушек формируется список
+    for (int i = 0; i < quantity; i++) {
+      num = rand.nextInt(sumProbability);
+      if (num >= 0 && num <= probability1 - 1) { // организация вероятностного выбора
+        Toy toy = new Toy("Constructor", probability1);
         toys.offer(toy);
       }
-      if (num >= 15 && num <= 19) {
-        Toy toy = new Toy("Robot", 5);
+      if (num >= probability1 && num <= (probability1 + probability2 - 1)) {
+        Toy toy = new Toy("Robot", probability2);
         toys.offer(toy);
       }
-      if (num >= 20 && num <= 79) {
-        Toy toy = new Toy("Teddy bear", 60);
+      if (num >= (probability1 + probability2)
+          && num <= (sumProbability - probability4 - 1)) {
+        Toy toy = new Toy("Teddy bear", probability3);
         toys.offer(toy);
       }
-      if (num >= 80 && num <= 99) {
-        Toy toy = new Toy("Barbi", 20);
+      if (num >= (sumProbability - probability4) && num <= (sumProbability - 1)) {
+        Toy toy = new Toy("Barbi", probability4);
         toys.offer(toy);
       }
     }

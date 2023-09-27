@@ -1,18 +1,14 @@
-## Getting Started
+## Приложение для организации розыгрыша игрушек
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+В программе заданы по умолчанию четыре игрушки:
+Constructor
+Robot
+Teddy bear
+Barbi
+И для каждой из них указан "вес" (вероятность выпадения). При желании его можно поменять на любой необходимый
 
-## Folder Structure
-
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+При запуске программы у пользователя запрашивается необходимое количество игрушек для розыгрыша, число проверяется.
+Затем на основе данного количества и вероятностей формируется список игрушек с использованием коллекции java.util.PriorityQueue.
+Туда они заносятся случайным образом.
+Затем из коллекции извлекаются методом getToy() в цикле, основанном на колчестве элементов в PriorityQueue.
+Сортировка в PriorityQueue настроена соглано ID
